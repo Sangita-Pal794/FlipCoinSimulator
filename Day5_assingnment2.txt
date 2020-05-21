@@ -1,0 +1,106 @@
+1>
+
+#!/bin/bash 
+#get 5 random numbers print sum  and avg
+gen () 
+{
+    while [[ True ]]
+    do
+        number=$RANDOM
+        if [[ $number -ge 100 && $number -le 1000 ]]
+        then
+            echo $number
+            exit
+        else
+            $pass
+        fi
+    done
+}
+max ()
+{
+    x=$1
+    y=$2
+    if [[ $x > $y ]]
+    then
+        echo $x
+    else
+        echo $y
+    fi
+}
+min ()
+{
+    x=$1
+    y=$2
+    if [[ $x < $y ]]
+    then
+        echo $x
+    else
+        echo $y
+    fi
+}
+read -p "enter how many numbers : " n
+for (( i=0;i<$n;i++ ))
+do
+    a[i]=$(gen)
+done
+
+
+for (( i=0;i<$n;i++ ))
+do
+    echo ${a[i]}
+done
+
+mx=0
+mi=${a[0]}
+
+for (( i=0;i<$n;i++ ))
+do
+    mx=$(echo $(max $mx ${a[i]}))
+    mi=$(echo $(min $mi ${a[i]}))
+done 
+
+echo "minimum is $mi and max is "$mx
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2>#! /bin/bash -x
+
+coinToss()
+{
+randomNumber= $(($((RANDOM% 2))+1)) \\$RANDOM is a command to generate random number
+ echo $randomNumber \\Variable to store the random number
+}
+
+read -p "How many times you want to toss the coin?" n
+
+
+for (( i=1; i<=n; i++ ))
+do
+   randomNumber=$(coinToss)
+        if [ $randomNumber -eq 1 ]
+        then
+        echo "headTail"="Head"
+        else
+        echo "headTail"="Tail"
+        fi
+ done
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4>#!/bin/bash
+read -p "Enter a year (yyyy): " user_year
+if  [ $(($user_year%4)) -eq 0 ]  || [ $(($user_year%400)) -eq 0 ]
+then
+ echo "It is a leap year"
+ else
+ echo "It is not a leap year"
+fi
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+3>#!/bin/bash -x
+
+read -p "Enter a date (dd-mm-yyyy): " user_date
+
+user_date=('$user_date +%D-%M-%Y')
+echo $user_date
+if([ $user_date -ge 20-03-2020 ] && [ $user_date -le 20-06-2020 ])                                                                                                       then
+  echo "True"
+ else
+  echo "False"
+fi
+
